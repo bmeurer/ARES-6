@@ -25,6 +25,14 @@
 
 const isInBrowser = false;
 
+// Support for running in d8.
+var readFile = readFile || read;
+var runString = runString || function (source) {
+  const realm = Realm.createAllowCrossRealmAccess();
+  Realm.eval(realm, source);
+  return Realm.global(realm);
+};
+
 function makeBenchmarkRunner(sources, benchmarkConstructor, numIterations = 200) {
     let source = "'use strict';"
     for (let file of sources) {
