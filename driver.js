@@ -51,7 +51,7 @@ class Driver {
         if (isInBrowser) {
             this._triggerCell.addEventListener('click', this._triggerLink);
             this._triggerCell.classList.add('ready');
-            (featureURLSupported && new URL(window.location.href).searchParams.get(autoStartParam)) ?  this._triggerLink()
+            (featureURLSupported && new URL(window.location.href).searchParams.get(autoStartParam)) ? this._triggerLink() : null;
         }
     }
     
